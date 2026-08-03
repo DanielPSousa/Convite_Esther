@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite 15 Anos - Esther</title>
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* Fundo escuro para a área externa */
+            background-color: #0b1c2e; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Container principal que mantém a proporção da imagem */
+        .convite-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 450px; 
+            margin: 0 auto;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+        }
+
+        /* A imagem 2_2.png como fundo responsivo */
+        .bg-imagem {
+            width: 100%;
+            display: block;
+            height: auto;
+        }
+
+        /* Container flexível alinhado exatamente sobre a fileira de ícones */
+        .botoes-interativos {
+            position: absolute;
+            bottom: 20%;      /* Subimos a área para alinhar com os ícones (antes era 16%) */
+            left: 17%;        /* Distância da borda esquerda */
+            right: 17%;       /* Distância da borda direita */
+            height: 9%;       /* Altura do círculo do botão */
+            
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Estilo das áreas clicáveis (transparentes) */
+        .botao-invisivel {
+            width: 18%;       /* Largura ajustada para formar um círculo perfeito */
+            height: 100%;
+            border-radius: 50%;
+            
+            /* DICA DE OURO: Para ver exatamente onde os botões estão e verificar o alinhamento, 
+               remova as barras e os asteriscos da linha abaixo. Eles ficarão vermelhos! */
+            /* background-color: rgba(255, 0, 0, 0.5); */
+            
+            cursor: pointer;
+            text-decoration: none;
+            
+            /* Efeito visual ao tocar na tela */
+            transition: background-color 0.2s;
+        }
+
+        .botao-invisivel:active {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="convite-wrapper">
+        <!-- A sua imagem entra aqui -->
+        <img src="2.png" alt="Convite 15 Anos Esther" class="bg-imagem">
+        
+        <!-- Mapeamento dos botões invisíveis sobrepostos -->
+        <div class="botoes-interativos">
+            
+            <!-- Botão 1: Sugestões de presentes -->
+            <a href="pagina3.html" class="botao-invisivel" title="Sugestões de Presentes"></a>
+            
+            <!-- Botão 2: Confirmação de presença -->
+            <a href="https://wa.me/5521995997030?text=Olá!%20Gostaria%20de%20confirmar%20minha%20presença%20nos%2015%20anos%20da%20Esther!" class="botao-invisivel" target="_blank" title="Confirmação de Presença"></a>
+            
+            <!-- Botão 3: Localização -->
+            <a href="https://maps.app.goo.gl/9Fuq79pCfoK1nnGc8" class="botao-invisivel" target="_blank" title="Localização"></a>
+            
+            <!-- Botão 4: Manual do convidado -->
+            <a href="pagina4.html" class="botao-invisivel" target="_blank" title="Manual do Convidado"></a>
+            
+        </div>
+    </div>
+
+</body>
+</html>

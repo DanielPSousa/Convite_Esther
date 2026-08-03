@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite Especial - Esther</title>
+    <style>
+        /* Reset básico e fundo escuro combinando com a identidade visual */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100vh;
+            background-color: #0b1c2e; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Remove barras de rolagem */
+        }
+
+        /* Container que simula a tela do celular */
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            height: 100%;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+        }
+
+        /* Configuração do vídeo para preencher a tela inteira sem distorcer */
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Camada transparente por cima do vídeo para capturar o clique inicial */
+        .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.1); /* Escurece de leve para indicar que é clicável */
+            transition: opacity 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="video-container" id="container-convite">
+        
+        <!-- O vídeo em si. Substitua 'seu_video.mp4' pelo nome exato do seu arquivo -->
+        <!-- A tag 'playsinline' é fundamental para que o vídeo não abra em tela cheia no iPhone (iOS) -->
+        <video id="video-abertura" playsinline preload="auto">
+            <source src="1-1.mp4" type="video/mp4">
+            Seu navegador não suporta a reprodução deste vídeo.
+        </video>
+        
+        <!-- Área de clique para iniciar o vídeo -->
+        <div class="play-overlay" id="overlay">
+            <!-- A tela aguarda o clique para iniciar -->
+        </div>
+
+    </div>
+
+    <script>
+        // Mapeando os elementos da tela
+        const video = document.getElementById('video-abertura');
+        const overlay = document.getElementById('overlay');
+        const container = document.getElementById('container-convite');
+
+        // 1. Ao clicar na tela, o vídeo começa a tocar
+        container.addEventListener('click', function() {
+            video.play();
+            
+            // Faz o overlay sumir suavemente
+            overlay.style.opacity = '0'; 
+            
+            // Remove o overlay do código após 500ms para não atrapalhar outros cliques
+            setTimeout(() => {
+                overlay.style.display = 'none';
+            }, 500);
+        });
+
+        // 2. O MÁGICO: Quando o vídeo terminar de tocar (evento 'ended'), redireciona a página
+        video.addEventListener('ended', function() {
+            // Substitua 'pagina2.html' pelo nome do arquivo do seu convite principal se for diferente
+            window.location.href = 'pagina2.html';
+        });
+    </script>
+</body>
+</html>

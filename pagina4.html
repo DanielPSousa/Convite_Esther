@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual do Convidado</title>
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* Fundo escuro para a área externa */
+            background-color: #0b1c2e; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: sans-serif;
+        }
+
+        /* Container que mantém a proporção da imagem */
+        .convite-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 450px; /* Tamanho máximo ideal para smartphones */
+            margin: 0 auto;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+        }
+
+        /* A imagem 4.png como fundo responsivo */
+        .bg-imagem {
+            width: 100%;
+            display: block;
+            height: auto;
+        }
+
+        /* Área invisível clicável para a confirmação de presença */
+        .area-confirmacao {
+            position: absolute;
+            /* Posição calculada para ficar sobre o 3º item "Confirme sua presença" */
+            top: 67%;    /* Distância do topo */
+            left: 15%;   /* Margem esquerda */
+            width: 70%;  /* Largura cobrindo o ícone e o texto */
+            height: 11%; /* Altura da área clicável */
+            
+            border-radius: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            
+            /* DICA: Para ver a área de clique e ajustar, remova os comentários abaixo: */
+            /* background-color: rgba(255, 0, 0, 0.4); */
+            
+            /* Efeito de piscar ao tocar */
+            transition: background-color 0.2s;
+        }
+
+        .area-confirmacao:active {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="convite-wrapper">
+        <!-- Sua imagem de fundo -->
+        <img src="4.png" alt="Manual do Convidado" class="bg-imagem">
+        
+        <!-- Botão invisível sobre "Confirme sua presença" redirecionando para o WhatsApp -->
+        <a href="https://wa.me/5521995997030?text=Olá!%20Gostaria%20de%20confirmar%20minha%20presença%20nos%2015%20anos%20da%20Esther!" class="area-confirmacao" target="_blank" title="Confirmar Presença"></a>
+    </div>
+
+</body>
+</html>

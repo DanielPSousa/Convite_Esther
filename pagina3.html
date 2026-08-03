@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sugestões de Presentes</title>
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* Fundo escuro para a área que sobrar ao redor da imagem */
+            background-color: #0b1c2e; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: sans-serif;
+        }
+
+        /* Container que mantém a proporção da imagem */
+        .convite-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 450px; /* Tamanho máximo ideal para smartphones */
+            margin: 0 auto;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+        }
+
+        /* A imagem 3.jpg como fundo responsivo */
+        .bg-imagem {
+            width: 100%;
+            display: block;
+            height: auto;
+        }
+
+        /* Área invisível clicável do Pix */
+        .area-pix {
+            position: absolute;
+            /* Posição calculada para ficar em cima da 4ª opção (Pix) */
+            top: 75%;    /* Distância do topo */
+            left: 15%;   /* Margem esquerda */
+            width: 70%;  /* Largura cobrindo o ícone e o texto */
+            height: 13%; /* Altura da área clicável */
+            
+            border-radius: 10px;
+            cursor: pointer;
+            
+            /* DICA: Para ver onde a área de clique está e ajustar, 
+               remova os comentários da linha abaixo: */
+            /* background-color: rgba(255, 0, 0, 0.4); */
+            
+            /* Efeito de piscar ao tocar */
+            transition: background-color 0.2s;
+        }
+
+        .area-pix:active {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Notificação de cópia (Toast) */
+        .toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 8px;
+            padding: 16px;
+            position: fixed;
+            z-index: 10;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            opacity: 0;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .toast.show {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="convite-wrapper">
+        <!-- Sua imagem de fundo -->
+        <img src="3.png" alt="Sugestões de Presentes" class="bg-imagem">
+        
+        <!-- Botão invisível posicionado sobre a área do Pix -->
+        <div class="area-pix" onclick="copiarPix()" title="Copiar chave Pix"></div>
+    </div>
+
+    <!-- Mensagem de sucesso -->
+    <div id="toast" class="toast">Chave Pix 21995997030 copiada com sucesso!</div>
+
+    <script>
+        // Função para copiar a chave Pix
+        function copiarPix() {
+            // COLOQUE SUA CHAVE PIX AQUI DENTRO DAS ASPAS
+            const chavePix = "21995997030"; 
+
+            navigator.clipboard.writeText(chavePix).then(() => {
+                mostrarNotificacao();
+            }).catch(err => {
+                console.error("Erro ao copiar a chave: ", err);
+                alert("Não foi possível copiar. Sua chave é: " + chavePix);
+            });
+        }
+
+        // Exibe o aviso flutuante
+        function mostrarNotificacao() {
+            const toast = document.getElementById("toast");
+            toast.className = "toast show";
+            
+            // Oculta após 3 segundos
+            setTimeout(function(){ 
+                toast.className = toast.className.replace("show", ""); 
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
